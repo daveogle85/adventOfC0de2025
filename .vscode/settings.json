@@ -1,0 +1,4 @@
+{
+    "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [],
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/Scripts/python.exe"
+}
