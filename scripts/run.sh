@@ -4,6 +4,7 @@ set -euo pipefail
 USAGE="Usage: $0 {venv|install|test|run|all} \n\nCommands:\n  venv    Create the .venv (if missing) and activate it for the script run\n  install Create venv and install requirements from requirements.txt\n  test    Run pytest inside the venv (requires pytest installed in venv)\n  run     Run the app via python -m app.main\n  all     Do install, test, then run\n"
 
 COMMAND=${1:-all}
+ARGS=("${@:2}")
 
 # Resolve repository root (one level up from scripts/)
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." >/dev/null 2>&1 && pwd)"
@@ -58,7 +59,7 @@ run_tests() {
 }
 
 run_app() {
-  python -m app.main
+  python -m app.main "${ARGS[@]}"
 }
 
 case "$COMMAND" in
