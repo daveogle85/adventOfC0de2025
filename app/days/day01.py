@@ -1,7 +1,4 @@
-from typing import Optional
-
-
-def part1(puzzle_input: str) -> Optional[int]:
+def part1(puzzle_input: str) -> int:
     """Sample part1: count number of lines in the input."""
     if not puzzle_input:
         return 0
@@ -18,7 +15,7 @@ def part1(puzzle_input: str) -> Optional[int]:
     return zero_count
 
 
-def part2(puzzle_input: str) -> Optional[int]:
+def part2(puzzle_input: str) -> int:
     """Sample part2: sum integer lines in the input (ignores non-int)."""
     if not puzzle_input:
         return 0
@@ -50,11 +47,6 @@ def turn_dial(current: int, steps: str) -> int:
     
 def number_of_times_past_zero(current: int, steps: str) -> int:
     """Calculate how many times the dial passes position 0 when moving from start to end.
-    
-    For right (R) movement: count = (current + amount) // 100
-    For left (L) movement: count how many times we reach position 0 during the countdown.
-    We reach 0 at steps: current, current+100, current+200, ...
-    (except if current=0, we don't count the starting position, so steps: 100, 200, 300, ...)
     """
     direction = steps[0]
     amount = int(steps[1:])
