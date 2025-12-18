@@ -69,6 +69,19 @@ pytest tests/test_day02.py
 
 ## How to Add a New Day
 
+The quickest way to generate boilerplate files for a new day is to use the `new_day.sh` script:
+
+```bash
+./scripts/new_day.sh 3
+```
+
+This creates:
+- `app/days/day03.py` — Solution file with `part1()` and `part2()` function stubs
+- `tests/test_day03.py` — Test file with placeholder test cases
+- `inputs/day03.txt` — Empty input file
+
+If you prefer to create files manually:
+
 1. **Create the solution file:**
 	- Copy an existing day file (e.g., `app/days/day01.py`) to a new file (e.g., `app/days/day03.py`).
 	- Implement the solution for the new day.
@@ -77,8 +90,13 @@ pytest tests/test_day02.py
 3. **Write tests:**
 	- Create a new test file (e.g., `tests/test_day03.py`) based on previous days' tests.
 	- Add test cases for your solution.
-4. **Update scripts (if needed):**
-	- Ensure `run.sh` or any other runner script supports the new day.
+
+After setting up the new day, implement your solution and tests, then run:
+
+```bash
+./scripts/run.sh test     # Run tests
+./scripts/run.sh run 3    # Run the solution for day 3
+```
 
 ## Requirements
 
