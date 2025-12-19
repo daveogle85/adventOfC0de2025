@@ -29,7 +29,7 @@ Available commands:
 - `venv` — Create the `.venv` virtual environment (if missing) and activate it for the script run.
 - `install` — Create the virtual environment and install dependencies from `requirements.txt`.
 - `test` — Run all tests using `pytest` inside the virtual environment.
-- `run [day]` — Run the app for a specific day. For example, `./run.sh run 2` runs the solution for day 2 using the corresponding input file.
+- `day` — Run the app for a specific day. For example, `./run.sh day 2` runs the solution for day 2 using the corresponding input file.
 - `all` — Perform install, test, and then run (default if no command is given).
 
 Example usage:
@@ -45,7 +45,7 @@ Example usage:
 ./run.sh test
 
 # Run the solution for day 2
-./run.sh run 2
+./run.sh day 2
 
 # Do install, test, and run in sequence
 ./run.sh all
@@ -95,7 +95,7 @@ After setting up the new day, implement your solution and tests, then run:
 
 ```bash
 ./scripts/run.sh test     # Run tests
-./scripts/run.sh run 3    # Run the solution for day 3
+./scripts/run.sh day 3    # Run the solution for day 3
 ```
 
 ## Requirements

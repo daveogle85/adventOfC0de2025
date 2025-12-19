@@ -39,21 +39,21 @@ class TestFindNumberOfAdjacentRolls:
         grid = [["@", ".", "."], [".", ".", "."], [".", ".", "."]]
         result = find_number_of_adjacent_rolls((0, 0), grid)
         assert result is not None
-        assert result[0][0] == "x"
+        assert result[0][0] == "m"
 
     def test_one_adjacent_right(self):
         """Test with one adjacent roll to the right - should return grid with replacement."""
         grid = [["@", "@", "."], [".", ".", "."], [".", ".", "."]]
         result = find_number_of_adjacent_rolls((0, 0), grid)
         assert result is not None
-        assert result[0][0] == "x"
+        assert result[0][0] == "m"
 
     def test_multiple_adjacent(self):
         """Test with multiple adjacent rolls - should return grid with replacement."""
         grid = [["@", "@", "."], ["@", ".", "."], [".", ".", "."]]
         result = find_number_of_adjacent_rolls((0, 0), grid)
         assert result is not None
-        assert result[0][0] == "x"
+        assert result[0][0] == "m"
 
     def test_all_adjacent(self):
         """Test when all 8 adjacent positions contain '@' - should return None."""
@@ -66,21 +66,21 @@ class TestFindNumberOfAdjacentRolls:
         grid = [["@", ".", "."], [".", "@", "."], [".", ".", "."]]
         result = find_number_of_adjacent_rolls((1, 1), grid)
         assert result is not None
-        assert result[1][1] == "x"
+        assert result[1][1] == "m"
 
     def test_corner_position(self):
         """Test at corner (fewer possible adjacent positions) - should return grid with replacement."""
         grid = [["@", "@"], ["@", "."]]
         result = find_number_of_adjacent_rolls((0, 0), grid)
         assert result is not None
-        assert result[0][0] == "x"
+        assert result[0][0] == "m"
 
     def test_edge_position(self):
         """Test at edge with 3 adjacent - should return grid with replacement."""
         grid = [[".", "@", "."], ["@", "@", "@"], [".", ".", "."]]
         result = find_number_of_adjacent_rolls((0, 1), grid)
         assert result is not None
-        assert result[0][1] == "x"
+        assert result[0][1] == "m"
 
     def test_exactly_four_adjacent(self):
         """Test with exactly 4 adjacent - should return None."""
@@ -129,5 +129,17 @@ class TestPart1:
 
 
 def test_part2_placeholder():
-    """Test part2 (currently a stub)."""
-    assert part2("") is None
+    """Test part2"""
+    puzzle = """..@@.@@@@.
+    @@@.@.@.@@
+    @@@@@.@.@@
+    @.@@@@..@.
+    @@.@@@@.@@
+    .@@@@@@@.@
+    .@.@.@.@@@
+    @.@@@.@@@@
+    .@@@@@@@@.
+    @.@.@@@.@."""
+
+    result = part2(puzzle)
+    assert result == 43
