@@ -12,11 +12,26 @@ def part1(puzzle_input: str):
 
 
 def part2(puzzle_input: str):
-    pass
+    boxes = parse_input(puzzle_input)
+    last_pair = find_last_pairing(boxes)
+    return part_two_result(last_pair)
 
 
 def parse_input(puzzle_input: str) -> list[str]:
     return puzzle_input.splitlines()
+
+
+def find_last_pairing(junctions) -> tuple[str, str]:
+    uf = DisjointSet(junctions)
+    edges = compute_all_edges(junctions)
+
+    for _, j1, j2 in edges:
+        if not uf.connected(j1, j2):
+            uf.merge(j1, j2)
+        if len(uf.subsets()) == 1:
+            return (j1, j2)
+
+    return ("", "")
 
 
 def find_n_shortest_connections(n, junctions):
@@ -24,7 +39,7 @@ def find_n_shortest_connections(n, junctions):
     edges = compute_all_edges(junctions)
 
     count = 0
-    for dist, j1, j2 in edges:
+    for _, j1, j2 in edges:
         if not uf.connected(j1, j2):
             uf.merge(j1, j2)
         count += 1
@@ -54,3 +69,11 @@ def compute_all_edges(junctions):
         edges.append((dist, j1, j2))
     edges.sort(key=lambda x: x[0])
     return edges
+
+
+def part_two_result(coords: tuple[str, str]) -> int:
+    if coords[0] == "" or coords[1] == "":
+        return 0
+    coords_1 = coords[0].split(",")
+    coords_2 = coords[1].split(",")
+    return int(coords_1[0]) * int(coords_2[0])
